@@ -1,13 +1,65 @@
+import { queryByLabelText } from '@testing-library/dom';
 import React, { useEffect, useState } from 'react';
 import { Card, FloatingLabel, Form } from 'react-bootstrap';
 import { useParams } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
+import Places from '../Places/Places';
 
 const Details = () => {
+
+  const {user}=useAuth()
     const {placeId}=useParams()
-    console.log(placeId);
 
     const [places,setPlace]=useState({});
+
+    // const [Username,setUsername]=useState('')
+    // const [useremail,setEmail]=useState('')
+    let [adress,setadress]=useState('')
+    let [number,setnumber]=useState('')
+
+          const getaddress=e=>{
+
+            setadress=e.target.value;
+          }
+
+          const getNumber=e=>{
+
+            setnumber=e.target.value;
+          }
+
+     
+
     console.log(places);
+    
+
+    const handleConfirm=e=>{
+              
+
+       const confirm=  window.confirm('are you sure')
+     if(confirm){
+
+      let order=places
+
+
+      let userdata={Name:`${user.displayName}`,Email:`${user.email}`,Phone:`${number}`,Adress:`${adress}`}
+
+      userdata.whitelist=order
+
+      fetch('http://localhost:9000/orders',{
+        method:'POST',
+        headers:{ "content-type": 'application/json'},
+               body:JSON.stringify(userdata)
+
+
+       
+
+      })
+     }
+      
+     
+      e.preventDefault()
+    }
+
     
 
 
@@ -20,6 +72,8 @@ const Details = () => {
         })
 
     },[placeId])
+
+
     const {name,Country,about,company,cost,picture,email,phone}=places
           
                   
@@ -47,16 +101,16 @@ const Details = () => {
   </Card>
 
   <section className="container">
- <form className="my-5">
+ <form onSubmit={handleConfirm} className="my-5">
  <FloatingLabel
     controlId="floatingInput"
     label="Phone Number"
     className="mb-2"
   >
-    <Form.Control type="number" placeholder="name@example.com" />
+    <Form.Control onBlur={getNumber} type="number" placeholder="name@example.com" />
   </FloatingLabel>
   <FloatingLabel controlId="floatinginput" label="Your Address" className="mb-2">
-    <Form.Control type="text" placeholder="Yout Address" />
+    <Form.Control onChange={getaddress} type="text" placeholder="Yout Address" />
   </FloatingLabel>
   <center><button className="btn-warning text-light p-3">Confirm WhiteList</button></center>
  </form>
