@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter,Switch,Route } from 'react-router-dom';
+import Details from './Components/Details/Details';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import Home from './Components/Home/Home';
+import Place from './Components/Home/Place';
+import NotFound from './Components/NotFound/NotFound';
+import Places from './Components/Places/Places';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import AuthProvider from './Contexts/AuthProvider';
 
-function App() {
+
+import Login from './Login/Login';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+    <BrowserRouter>
+    <Header></Header>
+         <Switch>
+           <Route exact path="/">
+             <Home></Home>
+           </Route>
+           <Route exact path="/home">
+             <Home></Home>
+           </Route>
+           <Route  path="/places">
+             <Places></Places>
+           </Route>
+           <PrivateRoute path="/place/:placeId">
+             <Details></Details>
+           </PrivateRoute>
+           <Route exact path="/register" >
+             <Login></Login>
+           </Route>
+
+           <Route exact path="/*">
+             <NotFound></NotFound>
+
+           </Route>
+          </Switch>
+         <Footer></Footer>
+    </BrowserRouter>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
