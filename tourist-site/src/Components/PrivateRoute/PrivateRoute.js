@@ -11,7 +11,7 @@ const PrivateRoute = (props) => {
 
 
         const {user}=useAuth()
-        console.log(user);
+      
 
     const {children,...rest}=props
 

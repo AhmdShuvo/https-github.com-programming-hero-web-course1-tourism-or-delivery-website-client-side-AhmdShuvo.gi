@@ -9,7 +9,7 @@ const Login = () => {
     const {SignInUsingGoogle,setUser}=useFirebase()
     const location=useLocation()
     const history=useHistory()
-    const url=location.state?.from.location.pathname
+    const url=location.state?.from.location.pathname||"/home"
 
     
 

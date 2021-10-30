@@ -4,7 +4,7 @@ import Details from './Components/Details/Details';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
-import Place from './Components/Home/Place';
+import WhiteList from './Components/MyWhiteList/WhiteList';
 import NotFound from './Components/NotFound/NotFound';
 import Places from './Components/Places/Places';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
@@ -28,6 +28,9 @@ const App = () => {
            <Route  path="/places">
              <Places></Places>
            </Route>
+           <PrivateRoute path="/order/:email">
+             <WhiteList></WhiteList>
+           </PrivateRoute>
            <PrivateRoute path="/place/:placeId">
              <Details></Details>
            </PrivateRoute>

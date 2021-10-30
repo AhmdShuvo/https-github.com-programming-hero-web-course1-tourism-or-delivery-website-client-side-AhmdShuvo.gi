@@ -1,9 +1,7 @@
-import { queryByLabelText } from '@testing-library/dom';
 import React, { useEffect, useState } from 'react';
-import { Card, FloatingLabel, Form } from 'react-bootstrap';
-import { useParams } from 'react-router';
+import { Card } from 'react-bootstrap';
+import {  useParams } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
-import Places from '../Places/Places';
 
 const Details = () => {
 
@@ -12,57 +10,10 @@ const Details = () => {
 
     const [places,setPlace]=useState({});
 
-    // const [Username,setUsername]=useState('')
-    // const [useremail,setEmail]=useState('')
-    let [adress,setadress]=useState('')
-    let [number,setnumber]=useState('')
+    const [adress,setadress]=useState('')
 
-          const getaddress=e=>{
-
-            setadress=e.target.value;
-          }
-
-          const getNumber=e=>{
-
-            setnumber=e.target.value;
-          }
-
-     
-
-    console.log(places);
-    
-
-    const handleConfirm=e=>{
-              
-
-       const confirm=  window.confirm('are you sure')
-     if(confirm){
-
-      let order=places
-
-
-      let userdata={Name:`${user.displayName}`,Email:`${user.email}`,Phone:`${number}`,Adress:`${adress}`}
-
-      userdata.whitelist=order
-
-      fetch('http://localhost:9000/orders',{
-        method:'POST',
-        headers:{ "content-type": 'application/json'},
-               body:JSON.stringify(userdata)
-
-
-       
-
-      })
-     }
-      
-     
-      e.preventDefault()
-    }
-
-    
-
-
+    const [number,setnumber]=useState('')
+ 
     useEffect(()=>{
 
         fetch('https://pacific-falls-94383.herokuapp.com/places').then(res=>res.json()).then(data=>{
@@ -72,6 +23,50 @@ const Details = () => {
         })
 
     },[placeId])
+
+
+
+    const getaddress=e=>{
+
+          setadress(e.target.value)
+    }
+
+    const getNumber=e=>{
+
+      setnumber(e.target.value);
+      
+    }
+
+  
+
+    const handleConfirm=e=>{
+              
+
+      const confirm=  window.confirm('are you sure')
+    if(confirm){
+
+     let order=places
+
+
+     let userdata={Name:`${user.displayName}`,Email:`${user.email}`,Phone:`${number}`,Adress:`${adress}`,status:"pending"}
+
+     userdata.whitelist=order
+
+     fetch('http://localhost:9000/orders',{
+       method:'POST',
+       headers:{ "content-type": 'application/json'},
+              body:JSON.stringify(userdata)
+
+     })
+
+     alert("Or")
+    }
+     
+   
+     e.preventDefault()
+   }
+
+
 
 
     const {name,Country,about,company,cost,picture,email,phone}=places
@@ -102,17 +97,11 @@ const Details = () => {
 
   <section className="container">
  <form onSubmit={handleConfirm} className="my-5">
- <FloatingLabel
-    controlId="floatingInput"
-    label="Phone Number"
-    className="mb-2"
-  >
-    <Form.Control onBlur={getNumber} type="number" placeholder="name@example.com" />
-  </FloatingLabel>
-  <FloatingLabel controlId="floatinginput" label="Your Address" className="mb-2">
-    <Form.Control onChange={getaddress} type="text" placeholder="Yout Address" />
-  </FloatingLabel>
-  <center><button className="btn-warning text-light p-3">Confirm WhiteList</button></center>
+ <div>
+ <input onChange={getaddress} className="form-control" type="text" placeholder="Type Your Address" required/>
+ <input onChange={getNumber} className="form-control" type="number" placeholder="Phone Number" required/>
+ </div>
+  <center><button type="submit" className="btn-warning text-light p-3">Confirm WhiteList</button></center>
  </form>
 
   </section>
