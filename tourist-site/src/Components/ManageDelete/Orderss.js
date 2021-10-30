@@ -8,17 +8,20 @@ const Orderss = ({service}) => {
 
     const handleDelete=(id)=>{
 
-        fetch(`http://localhost:9000/order/${id}`,{
+     const agree=  window.confirm("Are You Sure want to delete this ? ")
+       if(agree){
+        fetch(`https://pacific-falls-94383.herokuapp.com/order/${id}`,{
             method:'DELETE',
             headers: { "content-type" :'application/json'}
-        }).then( async res=>res.json()).then(async data=>{
+        }).then(res=>res.json()).then(data=>{
             console.log(data);
         });
         
 
-        window.location.reload()
-
   }
+  window.location.reload()
+    alert("deleted")
+       }
     return (
         <div className="container my-5 border border-3">
             <div className=" border border-info p-3 m-3 bg-dark text-info">

@@ -24,7 +24,9 @@ const Orders = ({order}) => {
 
     const handleDelete=(id)=>{
 
-        fetch(`http://localhost:9000/order/${id}`,{
+       const agree=window.confirm("Are You Sure You Want to Delete this ?")
+       if(agree){
+        fetch(`https://pacific-falls-94383.herokuapp.com/order/${id}`,{
             method:'DELETE',
             headers: { "content-type" :'application/json'}
         }).then( async res=>res.json()).then(async data=>{
@@ -32,8 +34,10 @@ const Orders = ({order}) => {
         });
         
 
-        window.location.reload()
+       
 
+       }
+     
   }
 
 
