@@ -28,9 +28,9 @@ const App = () => {
            <Route  path="/places">
              <Places></Places>
            </Route>
-           <PrivateRoute path="/order/:email">
+           <Route path="/order/:email">
              <WhiteList></WhiteList>
-           </PrivateRoute>
+           </Route>
            <PrivateRoute path="/place/:placeId">
              <Details></Details>
            </PrivateRoute>

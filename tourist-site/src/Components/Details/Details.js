@@ -52,14 +52,14 @@ const Details = () => {
 
      userdata.whitelist=order
 
-     fetch('http://localhost:9000/orders',{
+     fetch('https://pacific-falls-94383.herokuapp.com/orders',{
        method:'POST',
        headers:{ "content-type": 'application/json'},
               body:JSON.stringify(userdata)
 
      })
 
-     alert("Or")
+     alert(" your Order Recieved")
     }
      
    

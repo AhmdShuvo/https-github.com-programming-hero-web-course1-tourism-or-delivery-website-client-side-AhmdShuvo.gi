@@ -23,7 +23,7 @@ const Orders = ({order}) => {
 
                     }  
 
-        fetch(`http://localhost:9000/order/${order._id}`,{
+        fetch(`https://pacific-falls-94383.herokuapp.com/order/${order._id}`,{
             method:"PUT",
               headers: { "content-type" :'application/json'},
 
@@ -45,10 +45,8 @@ const Orders = ({order}) => {
           <h5>A Tour By : {company}</h5>
           <h5>Contact email : {email}</h5>
           <h5>Contact Phone: {phone}</h5>
-          <h5>{_id}</h5>
-          
           </center>
-           {status?<h5>status : {order.status}</h5>:<h3></h3>}
+          <h5>status : {order.status}</h5>
 
        
       </div> 
