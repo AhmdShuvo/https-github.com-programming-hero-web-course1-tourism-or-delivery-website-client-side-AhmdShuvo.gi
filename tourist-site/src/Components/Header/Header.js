@@ -30,7 +30,10 @@ const Header = () => {
       >
         <NavLink className="navbar-brand  border text-light p-3 m-2" to="/home">Home</NavLink>
         <NavLink className="navbar-brand  border text-light p-3 m-2" to="/places">places</NavLink>
-        <NavLink className="navbar-brand  border text-light p-3 m-2" to={`/order/${user.email}`}>my WhiteList</NavLink>
+       
+        {user.email?<NavLink className="navbar-brand  border text-light p-3 m-2" to={`/order/${user.email}`}>my WhiteList</NavLink>:<h1></h1>}
+        {user.email? <NavLink className="navbar-brand  border text-light p-3 m-2" to="/delete">Manage delete</NavLink>:<h1></h1>}
+        {user.Email?<NavLink className="navbar-brand  border text-light p-3 m-2" to="/upload">upload New Place</NavLink>:<h1></h1>}
        { !user.email?<NavLink className="navbar-brand text-light border p-3 m-2" to="/register">Log In</NavLink>:<a 
         onClick={handleLogOUt}
        className="navbar-brand text-light border p-3 m-2" href="/register">Log Out</a>}

@@ -10,7 +10,7 @@ const WhiteList = () => {
    
 
     useEffect(()=>{
-        fetch(`https://pacific-falls-94383.herokuapp.com/order/${email}`).then(res=>res.json()).then(data=>{
+        fetch(`https://pacific-falls-94383.herokuapp.com/orders/${email}`).then(res=>res.json()).then(data=>{
 
     setorders(data)
         })

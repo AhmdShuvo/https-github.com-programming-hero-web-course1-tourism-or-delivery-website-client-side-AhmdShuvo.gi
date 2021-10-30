@@ -101,7 +101,9 @@ const Details = () => {
  <input onChange={getaddress} className="form-control" type="text" placeholder="Type Your Address" required/>
  <input onChange={getNumber} className="form-control" type="number" placeholder="Phone Number" required/>
  </div>
-  <center><button type="submit" className="btn-warning text-light p-3">Confirm WhiteList</button></center>
+  <center>
+    <button type="submit" className="btn-warning text-light p-3">Confirm WhiteList</button>
+  </center>
  </form>
 
   </section>

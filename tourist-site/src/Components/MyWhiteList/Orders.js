@@ -1,36 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Orders = ({order}) => {
+               
 
+    const [services,setServices]=useState([])
+        
 
-
-    const [active,setActive]=useState({})
-
-    const {name,Country,about,company,cost,picture,email,phone,status,_id}=order.whitelist;
-
-    const getstatus=e=>{
-        setActive(e.target.value);
-
-    }
+    const {name,Country,company,cost,picture,email,phone,status,_id}=order.whitelist;
     
-    const handleUpdate=e=>{
-                    const handleChange=e=>{
-                        const state=e.target.value;
-                        const status={state}
-                        setActive(status)
-
-
-
-                    }  
+    const handleUpdate=e=>{ 
 
         fetch(`https://pacific-falls-94383.herokuapp.com/order/${order._id}`,{
             method:"PUT",
               headers: { "content-type" :'application/json'},
 
-            body:JSON.stringify({status:`${active}`})
+            body:JSON.stringify(services)
         })
 
+      
+
     }
+
+
+    const handleDelete=(id)=>{
+
+        fetch(`http://localhost:9000/order/${id}`,{
+            method:'DELETE',
+            headers: { "content-type" :'application/json'}
+        }).then( async res=>res.json()).then(async data=>{
+            console.log(data);
+        });
+        
+
+        window.location.reload()
+
+  }
+
+
     return (
         <div className=" container my-5 border border-info p-3 d-lg-flex align-items-center bg-dark">
            
@@ -38,6 +44,7 @@ const Orders = ({order}) => {
            
            <div className="text-light">
                <h4>place Name: <span className="text-light">{name}</span></h4>
+               <h4>Country: <span className="text-light">{Country}</span></h4>
 
                <div className="border border-info p-2 text info bg-dark text-light">
 
@@ -45,13 +52,19 @@ const Orders = ({order}) => {
           <h5>A Tour By : {company}</h5>
           <h5>Contact email : {email}</h5>
           <h5>Contact Phone: {phone}</h5>
+          
           </center>
-          <h5>status : {order.status}</h5>
+           {status?<h5>status : {order.status}</h5>:<h3></h3>}
+
+           <div>
+               <button onClick={()=>handleDelete(order._id)} className="btn-danger text-light p-3 border rounded-3">Delete Purhase</button>
+           </div>
 
        
       </div> 
          <form onSubmit={handleUpdate} >
-      <button className="btn-warning p-3 text-light m-3">Activate</button>
+        
+      <button className="btn-warning p-3 text-light m-3 border rounded-3">Activate</button>
          </form>
            </div>
         </div>
