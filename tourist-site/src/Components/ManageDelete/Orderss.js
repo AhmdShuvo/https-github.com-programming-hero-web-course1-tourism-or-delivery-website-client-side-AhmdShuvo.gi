@@ -6,6 +6,22 @@ const Orderss = ({service}) => {
 
     const {name,picture,}=service.whitelist
 
+
+    const handleUpdate=e=>{ 
+
+        fetch(`https://pacific-falls-94383.herokuapp.com/order/${service._id}`,{
+            method:"PUT",
+              headers: { "content-type" :'application/json'},
+
+            body:JSON.stringify(service.whitelist)
+        })
+        alert("order Updated")
+
+        window.location.reload()
+      
+
+    }
+
     const handleDelete=(id)=>{
 
      const agree=  window.confirm("Are You Sure want to delete this ? ")
@@ -34,6 +50,10 @@ const Orderss = ({service}) => {
            </div>
             </div>
             <button onClick={()=>handleDelete(service._id)} className="btn-danger p-3 text-light border rounded-3 m-3">Delete</button>
+            <button onClick={handleUpdate} className="btn-warning p-3 text-light m-3 border rounded-3">Activate</button>
+                   </div>
+                   <div>
+                  
                    </div>
 
         </div>
