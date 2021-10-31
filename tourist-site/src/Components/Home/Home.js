@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel, Row, Spinner } from 'react-bootstrap';
-import useAuth from '../../Hooks/useAuth';
 import "./Home.css"
 import Place from './Place';
 
 const Home = () => {
-  const {user}=useAuth()
 
     const [places,setplaces]=useState([])
 
@@ -28,7 +26,7 @@ const Home = () => {
        <div>
        <section className=" d-lg-flex justify-content-evenly align-items-center mb-5">
         <div className="header-container">
-  <img className="img-fluid" src="./images/header-image.jpg"/>
+           <img className="img-fluid" src="./images/header-image.jpg" alt="map"/>
   <div className="centered"><h1>Tourism models: the differential key to economic success</h1></div>
 </div>
 
