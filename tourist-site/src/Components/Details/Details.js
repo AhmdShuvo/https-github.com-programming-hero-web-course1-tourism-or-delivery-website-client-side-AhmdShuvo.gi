@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import {  useParams } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus} from '@fortawesome/free-solid-svg-icons'
 
 const Details = () => {
+  const CartIcon = <FontAwesomeIcon icon={faCartPlus} />
 
   const {user}=useAuth()
     const {placeId}=useParams()
@@ -84,7 +87,7 @@ const Details = () => {
       </Card.Text>
       <div className="border border-info p-2 text info bg-dark text-light">
 
-         <center> <h4>total cost:{cost} </h4>
+         <center> <h4>total cost:$ {cost} </h4>
           <h5>A Tour By : {company}</h5>
           <h5>Contact email : {email}</h5>
           <h5>Contact Phone: {phone}</h5>
@@ -96,13 +99,13 @@ const Details = () => {
   </Card>
 
   <section className="container">
- <form onSubmit={handleConfirm} className="my-5">
+ <form onSubmit={handleConfirm} className="my-2">
  <div>
  <input onChange={getaddress} className="form-control" type="text" placeholder="Type Your Address" required/>
  <input onChange={getNumber} className="form-control" type="number" placeholder="Phone Number" required/>
  </div>
   <center>
-    <button type="submit" className="btn-warning text-light p-3">Confirm WhiteList</button>
+    <button type="submit" className="btn-warning text-light p-3 m-2">Confirm WhiteList  {CartIcon} </button>
   </center>
  </form>
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
+import Abut from './Components/About/Abut';
 import Details from './Components/Details/Details';
+import Events from './Components/Events/Events';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
@@ -29,6 +31,12 @@ const App = () => {
            </Route>
            <Route  path="/places">
              <Places></Places>
+           </Route>
+           <Route path="/events">
+                     <Events></Events>
+           </Route>
+           <Route path="/about">
+             <Abut></Abut>
            </Route>
            <Route path="/order/:email">
              <WhiteList></WhiteList>

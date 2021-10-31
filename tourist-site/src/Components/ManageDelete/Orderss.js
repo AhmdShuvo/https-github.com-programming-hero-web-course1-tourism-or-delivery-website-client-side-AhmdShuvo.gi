@@ -23,7 +23,7 @@ const Orderss = ({service}) => {
     alert("deleted")
        }
     return (
-        <div className="container my-5 border border-3">
+        <div className="container my-5 border border-3 shadow-lg p-3 mb-5 bg-body rounded">
             <div className=" border border-info p-3 m-3 bg-dark text-info">
             <h1>User Name  : {service.Name} </h1>
                <div className="d-flex align-items-center">

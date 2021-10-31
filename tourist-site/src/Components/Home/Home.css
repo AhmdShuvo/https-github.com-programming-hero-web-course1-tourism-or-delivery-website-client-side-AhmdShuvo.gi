@@ -1,15 +1,17 @@
 .header-container {
      position: relative;
      text-align: center;
+     
    }
    
    /* Bottom left text */
    /* Centered text */
    .centered {
         font-family: serif;
-       color: rgb(253, 4, 4);
+       text-shadow: darkolivegreen;
+       color:rgb(247, 247, 247);
      position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-40%, -60%);
+     top: 60%;
+     left: 40%;
+     transform: translate(-50%, -50%);
    }

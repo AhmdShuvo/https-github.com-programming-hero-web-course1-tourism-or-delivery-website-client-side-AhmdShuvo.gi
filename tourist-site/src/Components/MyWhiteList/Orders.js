@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
 
 const Orders = ({order}) => {
+    const DeleteIcon = <FontAwesomeIcon icon={faExclamationCircle} />
                
 
     const [services,setServices]=useState([])
@@ -16,7 +19,9 @@ const Orders = ({order}) => {
 
             body:JSON.stringify(services)
         })
+        alert("order Updated")
 
+        window.location.reload()
       
 
     }
@@ -37,6 +42,10 @@ const Orders = ({order}) => {
        
 
        }
+
+       alert("order Deleted")
+
+       window.location.href="/home"
      
   }
 
@@ -61,7 +70,7 @@ const Orders = ({order}) => {
            {status?<h5>status : {order.status}</h5>:<h3></h3>}
 
            <div>
-               <button onClick={()=>handleDelete(order._id)} className="btn-danger text-light p-3 border rounded-3">Delete Purhase</button>
+               <button onClick={()=>handleDelete(order._id)} className="btn-danger text-light p-3 border rounded-3">Delete Purhase   {DeleteIcon} </button>
            </div>
 
        

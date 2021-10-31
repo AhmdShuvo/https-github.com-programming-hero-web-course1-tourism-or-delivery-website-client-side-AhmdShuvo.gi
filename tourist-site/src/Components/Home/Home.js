@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
+import { Carousel, Row } from 'react-bootstrap';
 import "./Home.css"
 import Place from './Place';
 
@@ -15,12 +15,66 @@ const Home = () => {
     },[])
     return (
         <>
+               
+
+
+              
+
+
+           {/* Banner / */}
+
         <section className=" d-lg-flex justify-content-evenly align-items-center mb-5">
         <div className="header-container">
-  <img className="img-fluid" src="./images/header-image.jpg" alt="Snow"/>
+  <img className="img-fluid" src="./images/header-image.jpg"/>
   <div className="centered"><h1>Tourism models: the differential key to economic success</h1></div>
 </div>
+
+
+          {/* Extra section // */}
         </section>
+
+        <article className="container my-5 d-md-flex align-items-center bg-info text-light p-3 ">
+
+<div className="mx-3"> 
+    <img className="img-fluid border rounded-3" src="https://thumbs.dreamstime.com/b/india-pointed-world-map-15575034.jpg" alt="" />
+</div>
+
+            <div>
+             <h1>visite Places Arround the world With Travel Guid </h1>
+              </div>
+
+              </article>
+
+
+     <div className="container">
+
+         <h4 className="fs-3 text-success m-2">Our Efficiency</h4>
+     <Carousel>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src="https://image.shutterstock.com/image-illustration/air-travelling-concept-passport-boarding-260nw-1154346064.jpg"
+      alt="First slide"
+    />
+    <Carousel.Caption>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block w-100"
+      src="https://resources.workable.com/wp-content/uploads/2013/07/travel-agent-640x230.jpg"
+      alt="Second slide"
+    />
+
+    <Carousel.Caption>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
+     </div>
+
+
+
+              {/* //Some places to visit */}
 
         <section className="container my-5">
 
@@ -37,6 +91,8 @@ const Home = () => {
 
             </Row>
         </section>
+      
+        
             
         </>
     );
