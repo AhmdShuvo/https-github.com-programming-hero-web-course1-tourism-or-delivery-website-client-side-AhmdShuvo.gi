@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Carousel, Row } from 'react-bootstrap';
+import { Carousel, Row, Spinner } from 'react-bootstrap';
+import useAuth from '../../Hooks/useAuth';
 import "./Home.css"
 import Place from './Place';
 
 const Home = () => {
+  const {user}=useAuth()
 
     const [places,setplaces]=useState([])
 
@@ -17,13 +19,14 @@ const Home = () => {
         <>
                
 
-
+              
               
 
 
            {/* Banner / */}
-
-        <section className=" d-lg-flex justify-content-evenly align-items-center mb-5">
+              {places?
+       <div>
+       <section className=" d-lg-flex justify-content-evenly align-items-center mb-5">
         <div className="header-container">
   <img className="img-fluid" src="./images/header-image.jpg"/>
   <div className="centered"><h1>Tourism models: the differential key to economic success</h1></div>
@@ -91,6 +94,7 @@ const Home = () => {
 
             </Row>
         </section>
+       </div>:<center><Spinner className="text-danger fs-1" animation="grow" /></center>}
       
         
             

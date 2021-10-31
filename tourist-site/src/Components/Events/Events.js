@@ -11,10 +11,10 @@ const Events = () => {
     },[])
     return (
         <div className="my-5">
-            <article className="my-5">
+            <article className="">
                 <div className="container d-lg-flex align-items-center ">
                    <div>
-                   <img src="./images/Home-templet.png" alt="" />
+                   <img className="img-fluid" src="./images/Home-templet.png" alt="" />
                    </div>
                    <div><h1 className="m-3 text-success fs-1">We host more Leaders than Others...</h1></div>
 
