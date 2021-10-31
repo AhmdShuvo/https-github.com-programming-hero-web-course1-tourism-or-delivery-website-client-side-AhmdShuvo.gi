@@ -5,12 +5,13 @@ import { Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useFirebase from '../../Hooks/useFirebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch} from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faUserCircle} from '@fortawesome/free-solid-svg-icons'
 import "./Header.css"
 
 const Header = () => {
 
   const SeacrhIcon = <FontAwesomeIcon icon={faSearch} />
+  const USerIcon = <FontAwesomeIcon icon={faUserCircle} />
   const {user,UserSignOUt,setUser}=useFirebase();
 
   const handleLogOUt=()=>{
@@ -46,7 +47,7 @@ const Header = () => {
        className="navbar-brand text-light border p-3 m-2 Link" href="/register">Log Out</a>}
        <NavLink className="navbar-brand  border text-light p-3 m-2 Link " to="/about">About US</NavLink>
       </Nav>
-      {user.email?<div><h4>{user.displayName}</h4>
+      {user.email?<div><h4>  {USerIcon} {user.displayName} </h4>
       </div>:<h4></h4>}
       <Form className="d-flex">
         <FormControl

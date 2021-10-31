@@ -37,7 +37,7 @@ const Home = () => {
         <article className="container my-5 d-md-flex align-items-center bg-info text-light p-3 ">
 
 <div className="mx-3"> 
-    <img className="img-fluid border rounded-3" src="https://thumbs.dreamstime.com/b/india-pointed-world-map-15575034.jpg" alt="" />
+    <img className="img-fluid border rounded-3" src="./images/015-Cute-Map-of-Seattle.jpg" alt="" />
 </div>
 
             <div>

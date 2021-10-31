@@ -11,20 +11,7 @@ const Orders = ({order}) => {
 
     const {name,Country,company,cost,picture,email,phone,status,_id}=order.whitelist;
     
-    const handleUpdate=e=>{ 
 
-        fetch(`https://pacific-falls-94383.herokuapp.com/order/${order._id}`,{
-            method:"PUT",
-              headers: { "content-type" :'application/json'},
-
-            body:JSON.stringify(services)
-        })
-        alert("order Updated")
-
-        window.location.reload()
-      
-
-    }
 
 
     const handleDelete=(id)=>{
@@ -75,10 +62,6 @@ const Orders = ({order}) => {
 
        
       </div> 
-         <form onSubmit={handleUpdate} >
-        
-      <button className="btn-warning p-3 text-light m-3 border rounded-3">Activate</button>
-         </form>
            </div>
         </div>
     );
